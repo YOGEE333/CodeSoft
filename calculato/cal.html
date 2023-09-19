@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <script>
+        function insert(num)
+        {
+            document.getElementById("result").value += num;
+        }    
+        function backspace()
+        {
+            var exp = document.getElementById("result").value;
+            document.getElementById("result").value = exp.substring(0,exp.length-1);
+        }
+        function clean()
+        {
+            document.getElementById("result").value = ""
+        }
+        function solve()
+        {
+            let x = document.getElementById("result").value;
+            let y = eval(x);
+            document.getElementById('result').value=y;
+        }
+        function nyf(event)
+        {
+            if(event.key == '0'||event.key == '1'||
+            event.key == '2'||event.key == '3'||
+            event.key == '4'||event.key == '5'||
+            event.key == '6'||event.key == '7'||
+            event.key == '8'||event.key == '9'||
+            event.key == '+'||event.key == '-'||
+            event.key == '*'||event.key == '/')
+            {
+                document.getElementById("result").value += event.key;
+            }
+        }
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            border: 2px solid;
+            border-color:black ;
+            margin: auto;
+            margin-top: 225px;
+            background-color: #000000;
+            color: aliceblue;
+            font-weight: 700;
+            font-size: 60px;
+        }
+        .btn
+        {
+            width: 120px;
+            height:75px;
+            background-color: #024801;
+            color: aliceblue;
+            font-weight: 700;
+            border-radius: 8px;
+            border-width: 3px;
+            border-color: aliceblue;
+            font-size: 30px;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
+        input[value="0"]
+        {
+            width: 240px;
+            height:75px;
+        }
+        input[value="="]
+        {
+            width: 120px;
+            height:150px;
+        }
+        input[type = "text"]
+        {
+            width: 480px;
+            height: 75px;
+            background-color: aliceblue;
+            color: black;
+            font-weight: 700;
+            border-radius: 8px;
+            border-width: 3px;
+            border-color: aliceblue;
+            font-size: 30px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body bgcolor="black">
+    <table id="cal">
+        <tr><td colspan='4' align='center'> CALCULATOR </td></tr>
+        <tr>
+            <td colspan="4"><input type="text" id="result"></td>
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="CLR" onclick="clean()"></td>
+            <td><input class="btn" type="button" value="/" onclick="insert('/')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="*" onclick="insert('*')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="BCS" onclick="backspace()" onkeydown="nyf(event)"></td>
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="7" onclick="insert('7')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="8" onclick="insert('8')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="9" onclick="insert('9')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="-" onclick="insert('-')" onkeydown="nyf(event)"></td>
+
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="4" onclick="insert('4')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="5" onclick="insert('5')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="6" onclick="insert('6')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="+" onclick="insert('+')" onkeydown="nyf(event)"></td>
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="1" onclick="insert('1')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="2" onclick="insert('2')" onkeydown="nyf(event)"></td>
+            <td><input class="btn"  type="button" value="3" onclick="insert('3')" onkeydown="nyf(event)"></td>
+            <td id="som" rowspan="2"><input class="btn" type="button" value="=" onclick="solve()"></td>
+        </tr>
+        <tr>
+            <td  id="som" colspan="2"><input class="btn" type="button" value="0" onclick="insert('0')" onkeydown="nyf(event)"></td>
+            <td><input class="btn" type="button" value="." onclick="insert('.')" onkeydown="nyf(event)"></td>
+             </tr>
+    </table>
+</body>
+</html>
